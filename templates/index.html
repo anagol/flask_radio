@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Radio</title>
+</head>
+<body>
+{% block content %}
+    {% for station in stations %}
+        <div id="{{ station.title }}" class="play">
+            <p>{{ station.title }}</p>
+            <div class="player">
+                <audio controls src="{{ station.url }}"></audio>
+                <img src="{{ station.picture }}" alt="">
+            </div>
+            <p class="track"></p>
+        </div>
+    {% endfor %}
+{% endblock %}
+{#<script>#}
+{#    function get_track() {#}
+{#        const station = ['Belarus', 'Ukraine']#}
+{#        station.forEach(stat => {#}
+            {#console.log(stat)#}
+{#            fetch(`/track?station=${stat}`).then(r => r.json()).then(data => {#}
+{#                const tr = document.querySelector(`#${stat} .track`)#}
+                {#console.log(tr)#}
+{#                tr.innerText = data.track#}
+                {#console.log(data)#}
+{#            })#}
+{#        })#}
+{#    }#}
+{##}
+{#    setInterval(get_track, 3000)#}
+{#</script>#}
+<script src="/static/script.js"></script>
+</body>
+</html>

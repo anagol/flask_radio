@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.player{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 50px;
+    background-color: #54deea;
+    /*width: 30%;*/
+    align-items: center;
+    border-radius: 15px;
+}
+audio{
+    margin-left: 5px;
+}
+p{
+    color: blue;
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 50px;
+    margin-top: 20px;
+    text-align: center;
+}
+.track{
+    color: blue;
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: 50px;
+    margin-top: 20px;
+    text-align: center;
+}
+img{
+    margin-left: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.play{
+    width: 470px;
+    height: 200px;
+
+}
