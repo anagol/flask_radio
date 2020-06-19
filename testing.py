@@ -1,5 +1,6 @@
 import requests, bs4
 
+
 s = requests.get('https://play.tavr.media/radiorelax/int/')
 b = bs4.BeautifulSoup(s.text, 'html.parser')
 track_tag_singer = b.select('#singer0')
