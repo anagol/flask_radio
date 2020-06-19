@@ -22,6 +22,14 @@ def track_ukraine():
     return track
 
 
+def humor_fm():
+    s = requests.get('https://onlineradiobox.com/by/humorfm/')
+    b = bs4.BeautifulSoup(s.text, 'html.parser')
+    track_tag = b.select('.active td:nth-child(2)')
+    track = track_tag[0].getText()
+    return track
+
+
 class Station:
     def __init__(self, url, title, picture):
         self.url = url
@@ -35,9 +43,14 @@ relax_belarus = Station(url='http://live.humorfm.by:8000/radiorelax', title='Bel
 relax_ukraine = Station(url='https://online.radiorelax.ua/RadioRelax_Int_HD', title='Ukraine',
                         picture='http://top-radio.ru/assets/image/radio/180/Relax_International.png')
 
-stations = [relax_belarus, relax_ukraine]
+humor = Station(url='http://ic6.101.ru:8000/stream/air/aac/64/102', title='HumorFm',
+                picture='http://humorfm.by/assets/i/hdr-logo.png')
+
+stations = [relax_belarus, relax_ukraine, humor]
 parsers = {'Belarus': track_belarus,
-           'Ukraine': track_ukraine}
+           'Ukraine': track_ukraine,
+           'Humor': humor_fm
+           }
 
 
 @app.route('/')
