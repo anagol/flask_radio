@@ -1,5 +1,5 @@
-import requests, bs4
-
+import bs4
+import requests
 
 s = requests.get('https://play.tavr.media/radiorelax/int/')
 b = bs4.BeautifulSoup(s.text, 'html.parser')
