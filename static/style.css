@@ -16,7 +16,7 @@ audio{
     margin-left: 5px;
 }
 p{
-    color: #3d3d8d;
+    color: #11557C;
     font-size: 30px;
     font-weight: 700;
     margin-left: 50px;
@@ -24,7 +24,7 @@ p{
     text-align: center;
 }
 .track{
-    color: blue;
+    color: #11557C;
     font-size: 20px;
     font-weight: 300;
     margin-left: 50px;
@@ -38,8 +38,8 @@ img{
     border-radius: 50%;
 }
 
-.play{
+.play {
     width: 470px;
     height: 200px;
-
 }
+
