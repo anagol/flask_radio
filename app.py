@@ -5,8 +5,6 @@ from flask import Flask, render_template, jsonify, request
 app = Flask(__name__)
 
 
-
-
 def track_belarus():
     s = requests.get('https://onlineradiobox.com/by/radiorelax/')
     b = bs4.BeautifulSoup(s.text, 'html.parser')
@@ -36,7 +34,6 @@ relax_belarus = Station(url='http://live.humorfm.by:8000/radiorelax', title='Bel
 
 relax_ukraine = Station(url='https://online.radiorelax.ua/RadioRelax_Int_HD', title='Ukraine',
                         picture='http://top-radio.ru/assets/image/radio/180/Relax_International.png')
-
 
 stations = [relax_belarus, relax_ukraine]
 parsers = {'Belarus': track_belarus,
