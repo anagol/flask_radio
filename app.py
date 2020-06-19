@@ -1,14 +1,10 @@
+import bs4
+import requests
 from flask import Flask, render_template, jsonify, request
-import requests, bs4
 
 app = Flask(__name__)
 
 
-class Station:
-    def __init__(self, url, title, picture):
-        self.url = url
-        self.title = title
-        self.picture = picture
 
 
 def track_belarus():
@@ -22,9 +18,17 @@ def track_belarus():
 def track_ukraine():
     s = requests.get('https://play.tavr.media/radiorelax/int/')
     b = bs4.BeautifulSoup(s.text, 'html.parser')
-    track_tag = b.select('#song0')
-    track = track_tag[0].getText()
+    track_tag_singer = b.select('#singer0')
+    track_tag_song = b.select('#song0')
+    track = track_tag_singer[0].getText() + ' - ' + track_tag_song[0].getText()
     return track
+
+
+class Station:
+    def __init__(self, url, title, picture):
+        self.url = url
+        self.title = title
+        self.picture = picture
 
 
 relax_belarus = Station(url='http://live.humorfm.by:8000/radiorelax', title='Belarus',
@@ -32,9 +36,7 @@ relax_belarus = Station(url='http://live.humorfm.by:8000/radiorelax', title='Bel
 
 relax_ukraine = Station(url='https://online.radiorelax.ua/RadioRelax_Int_HD', title='Ukraine',
                         picture='http://top-radio.ru/assets/image/radio/180/Relax_International.png')
-#
-# relax_cafe = Station(url='https://online.radiorelax.ua/RadioRelax_Cafe_HD', title='Radio Relax Cafe',
-#                      picture='http://top-radio.ru/assets/image/radio/180/Relax_Cafe.png')
+
 
 stations = [relax_belarus, relax_ukraine]
 parsers = {'Belarus': track_belarus,
