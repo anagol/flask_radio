@@ -1,5 +1,5 @@
 function get_track() {
-    const station = ['Belarus', 'Ukraine', 'Humor']
+    const station = ['Belarus', 'Ukraine']
     station.forEach(stat => {
         // console.log(stat)
         fetch(`/track?station=${stat}`).then(r => r.json()).then(data => {
